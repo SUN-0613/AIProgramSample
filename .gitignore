@@ -2,3 +2,6 @@
 /NeuralNetwork/obj
 /NeuralNetwork/bin
 /NeuralNetwork/MNIST
+/MNIST
+/MnistToBmp/obj
+/MnistToBmp/bin
