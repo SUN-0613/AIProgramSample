@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuralNetwork", "NeuralNetwork\NeuralNetwork.csproj", "{C6B521C2-4A6E-410F-A7FE-0C128CB1CAF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MnistToBmp", "MnistToBmp\MnistToBmp.csproj", "{921A089C-F7DC-483D-90DA-1CAF6AAD28A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MnistToBmp", "MnistToBmp\MnistToBmp.csproj", "{921A089C-F7DC-483D-90DA-1CAF6AAD28A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MachineLearning", "MachineLearning\MachineLearning.csproj", "{034BCC41-1CB0-498E-BCAA-EACB006D3993}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{921A089C-F7DC-483D-90DA-1CAF6AAD28A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{921A089C-F7DC-483D-90DA-1CAF6AAD28A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{921A089C-F7DC-483D-90DA-1CAF6AAD28A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{034BCC41-1CB0-498E-BCAA-EACB006D3993}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{034BCC41-1CB0-498E-BCAA-EACB006D3993}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{034BCC41-1CB0-498E-BCAA-EACB006D3993}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{034BCC41-1CB0-498E-BCAA-EACB006D3993}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
