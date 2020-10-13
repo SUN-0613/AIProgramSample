@@ -6,7 +6,7 @@ namespace NeuralNetwork
 {
 
     /// <summary>ニューラルネットワーク</summary>
-    public class NeuralNetwork : IDisposable
+    public class Network : IDisposable
     {
 
         #region property
