@@ -11,7 +11,7 @@ namespace NeuralNetwork.Elements
         #region property
 
         /// <summary>本層に属するノード一覧</summary>
-        public List<Node> Nodes = new List<Node>();
+        public List<Node> Nodes { get; set; } = new List<Node>();
 
         #endregion
 
