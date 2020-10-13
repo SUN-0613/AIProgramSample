@@ -42,6 +42,65 @@ namespace NeuralNetwork.Elements
 
         }
 
+        /// <summary>全ノードに指定した出力層を結合</summary>
+        /// <param name="rightLayer">出力側の層</param>
+        public void ConnectDensely(Layer rightLayer)
+        {
+
+            Nodes.ForEach(
+                (node) =>
+                {
+
+                    rightLayer.Nodes.ForEach(
+                        (nextNode) =>
+                        {
+                            node.Connect(nextNode);
+                        });
+
+                });
+
+        }
+
+        /// <summary>全ノードの重みを初期化</summary>
+        public void InitializeWeight()
+        {
+            Nodes.ForEach((node) => node.InitializeWeight());
+        }
+
+        /// <summary>全ノードにデータ入力</summary>
+        /// <param name="inputs">入力値一覧</param>
+        public void SetInputData(double[] inputs)
+        {
+
+            for (var iLoop = 0; iLoop < Nodes.Count; iLoop++)
+            {
+
+                if (iLoop < inputs.Length)
+                {
+                    Nodes[iLoop].OutputValue = inputs[iLoop];
+                }
+                else
+                {
+                    Nodes[iLoop].OutputValue = 0d;
+                }
+
+            }
+
+        }
+
+        /// <summary>全ノードの出力値の計算</summary>
+        public void CalcOutputValue()
+        {
+            Nodes.ForEach((node) => { node.CalcOutputValue(); });
+        }
+
+        /// <summary>全ノードの重み更新</summary>
+        /// <param name="alpha">学習率</param>
+        public void UpdateWeight(double alpha)
+        {
+            Nodes.ForEach((node) => { node.UpdateWeight(alpha); });
+        }
+
         #endregion
 
     }
