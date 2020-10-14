@@ -54,6 +54,10 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttachedBehaviors\Canvases\CreateBmpFile.cs" />
+    <Compile Include="AttachedBehaviors\Canvases\PaintMode.cs" />
+    <Compile Include="MVVM\DelegateCommand.cs" />
+    <Compile Include="MVVM\ViewModelBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
