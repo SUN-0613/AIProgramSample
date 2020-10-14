@@ -61,6 +61,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Models\Main.cs" />
+    <Compile Include="Forms\ViewModels\Main.cs" />
+    <Compile Include="Forms\Views\Main.xaml.cs">
+      <DependentUpon>Main.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -87,9 +92,20 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Forms\Models\" />
-    <Folder Include="Forms\ViewModels\" />
-    <Folder Include="Forms\Views\" />
+    <ProjectReference Include="..\NeuralNetwork\NeuralNetwork.csproj">
+      <Project>{c6b521c2-4a6e-410f-a7fe-0c128cb1caf2}</Project>
+      <Name>NeuralNetwork</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WpfLibrary\WpfLibrary.csproj">
+      <Project>{5b6c9c62-548a-455c-8583-1cafc0e3c008}</Project>
+      <Name>WpfLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Forms\Views\Main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

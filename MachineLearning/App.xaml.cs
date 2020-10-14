@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using MachineLearning.Forms.Views;
+using System.Windows;
 
 namespace MachineLearning
 {
@@ -15,7 +16,7 @@ namespace MachineLearning
 
             base.OnStartup(e);
 
-
+            new Main().ShowDialog();
 
         }
 
