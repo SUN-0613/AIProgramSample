@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MnistToBmp", "MnistToBmp\Mn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MachineLearning", "MachineLearning\MachineLearning.csproj", "{034BCC41-1CB0-498E-BCAA-EACB006D3993}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfLibrary", "WpfLibrary\WpfLibrary.csproj", "{5B6C9C62-548A-455C-8583-1CAFC0E3C008}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{034BCC41-1CB0-498E-BCAA-EACB006D3993}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{034BCC41-1CB0-498E-BCAA-EACB006D3993}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{034BCC41-1CB0-498E-BCAA-EACB006D3993}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B6C9C62-548A-455C-8583-1CAFC0E3C008}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B6C9C62-548A-455C-8583-1CAFC0E3C008}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B6C9C62-548A-455C-8583-1CAFC0E3C008}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B6C9C62-548A-455C-8583-1CAFC0E3C008}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
