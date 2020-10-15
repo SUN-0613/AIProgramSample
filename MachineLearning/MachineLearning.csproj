@@ -61,10 +61,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\Models\Main.cs" />
-    <Compile Include="Forms\ViewModels\Main.cs" />
-    <Compile Include="Forms\Views\Main.xaml.cs">
-      <DependentUpon>Main.xaml</DependentUpon>
+    <Compile Include="Forms\Models\Training.cs" />
+    <Compile Include="Forms\ViewModels\Training.cs" />
+    <Compile Include="Forms\Views\Training.xaml.cs">
+      <DependentUpon>Training.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -102,7 +102,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Forms\Views\Main.xaml">
+    <Page Include="Forms\Views\Training.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -5,11 +5,11 @@ namespace MachineLearning.Forms.Views
     /// <summary>
     /// Main.xaml の相互作用ロジック
     /// </summary>
-    public partial class Main : Window
+    public partial class Training : Window
     {
 
         /// <summary>MNISTのデータセットを機械学習する.View</summary>
-        public Main()
+        public Training()
         {
 
             InitializeComponent();
