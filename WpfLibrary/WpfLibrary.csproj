@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttachedBehaviors\Canvases\CreateBmpFile.cs" />
+    <Compile Include="AttachedBehaviors\Canvases\DrawGraph.cs" />
     <Compile Include="AttachedBehaviors\Canvases\PaintMode.cs" />
     <Compile Include="MVVM\DelegateCommand.cs" />
     <Compile Include="MVVM\ViewModelBase.cs" />
