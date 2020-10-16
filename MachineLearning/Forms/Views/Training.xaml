@@ -3,10 +3,51 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MachineLearning.Forms.Views"
+        xmlns:vm="clr-namespace:MachineLearning.Forms.ViewModels"
+        xmlns:bc="clr-namespace:WpfLibrary.AttachedBehaviors.Canvases;assembly=WpfLibrary"
+        xmlns:bu="clr-namespace:WpfLibrary.AttachedBehaviors.UIElements;assembly=WpfLibrary"
+        xmlns:bw="clr-namespace:WpfLibrary.AttachedBehaviors.Windows;assembly=WpfLibrary"
         mc:Ignorable="d"
-        Title="Main" Height="450" Width="800">
-    <Grid>
-        
+        bu:ShowMessageBox.Info="{Binding MessageInfo}"
+        bw:DisposeViewModel.IsDisposableViewModel="True"
+        Title="Training" Height="350" Width="600" >
+    <Window.DataContext>
+        <vm:Training />
+    </Window.DataContext>
+    <Grid Margin="2" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Message}" Margin="10,10,0,0" />
+
+        <Canvas Grid.Row="0" Grid.Column="1" Background="LightGray" Margin="5"
+            bc:DrawGraph.IsInitialize="{Binding IsGraphInitialize}" bc:DrawGraph.LinePoint="{Binding GraphPoint}"
+            bc:DrawGraph.MinPoint="{Binding MinPoint}" bc:DrawGraph.MaxPoint="{Binding MaxPoint}"
+            bc:DrawGraph.Stroke="Black" bc:DrawGraph.StrokeThickness="1" />
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="2" >
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="1" Content="Start" IsEnabled="{Binding IsButtonEnabled}" >
+                <Button.InputBindings>
+                    <MouseBinding MouseAction="LeftClick" Command="{Binding TrainCommand}" />
+                </Button.InputBindings>
+            </Button>
+            
+        </Grid>
+
+
+
     </Grid>
 </Window>
