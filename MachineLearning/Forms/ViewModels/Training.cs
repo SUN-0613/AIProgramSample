@@ -39,7 +39,7 @@ namespace MachineLearning.Forms.ViewModels
         public bool IsGraphInitialize { get; set; } = false;
 
         /// <summary>折れ線グラフの最小座標</summary>
-        public Point MinPoint { get; set; } = new Point(0d, 0.5);
+        public Point MinPoint { get; set; } = new Point(0d, 0d);
 
         /// <summary>折れ線グラフの最大座標</summary>
         public Point MaxPoint { get; set; } = new Point(1d, 1d);
