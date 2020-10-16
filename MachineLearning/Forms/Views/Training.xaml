@@ -10,6 +10,8 @@
         mc:Ignorable="d"
         bu:ShowMessageBox.Info="{Binding MessageInfo}"
         bw:DisposeViewModel.IsDisposableViewModel="True"
+        bw:CheckClosable.IsCheck="True"
+        bw:CheckClosable.IsClosable="{Binding IsButtonEnabled}"
         Title="Training" Height="350" Width="600" >
     <Window.DataContext>
         <vm:Training />
