@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Windows;
 
-namespace WpfLibrary.Windows
+namespace WpfLibrary.AttachedBehaviors.Windows
 {
 
     /// <summary>Windowを閉じて良いか判定する添付ビヘイビア</summary>
