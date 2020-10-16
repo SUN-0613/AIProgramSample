@@ -16,7 +16,7 @@ namespace MachineLearning
 
             base.OnStartup(e);
 
-            new Training().ShowDialog();
+            new Detect().ShowDialog();
 
         }
 

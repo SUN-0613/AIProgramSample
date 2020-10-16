@@ -61,8 +61,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Models\Detect.cs" />
     <Compile Include="Forms\Models\Training.cs" />
+    <Compile Include="Forms\ViewModels\Detect.cs" />
     <Compile Include="Forms\ViewModels\Training.cs" />
+    <Compile Include="Forms\Views\Detect.xaml.cs">
+      <DependentUpon>Detect.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Views\Training.xaml.cs">
       <DependentUpon>Training.xaml</DependentUpon>
     </Compile>
@@ -102,6 +107,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Forms\Views\Detect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Forms\Views\Training.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
