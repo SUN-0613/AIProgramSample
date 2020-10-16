@@ -235,7 +235,7 @@ namespace WpfLibrary.AttachedBehaviors.Canvases
             var max = GetMaxPoint(canvas);
 
             var x = (canvas.ActualWidth * (point.X - min.X)) / (max.X - min.X);
-            var y = canvas.ActualHeight - ((canvas.Height * (point.Y - min.Y)) / (max.Y - min.Y));
+            var y = canvas.ActualHeight - ((canvas.ActualHeight * (point.Y - min.Y)) / (max.Y - min.Y));
 
             return new Point(x, y);
 
@@ -247,7 +247,7 @@ namespace WpfLibrary.AttachedBehaviors.Canvases
         private static void OnIsInitializeChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
 
-            _Line.Points.Clear();
+            _Line?.Points.Clear();
             _Line = null;
 
             _LineEndPoint = _NaNPoint;
