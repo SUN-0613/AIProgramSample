@@ -22,7 +22,7 @@ namespace WpfLibrary.AttachedBehaviors.UIElements
         /// <param name="sender">UIElement</param>
         /// <returns>現在値</returns>
         [AttachedPropertyBrowsableForType(typeof(UIElement))]
-        public MessageBoxInfo GetInfo(DependencyObject sender)
+        public static MessageBoxInfo GetInfo(DependencyObject sender)
         {
             return (MessageBoxInfo)sender.GetValue(InfoProperty);
         }
@@ -31,7 +31,7 @@ namespace WpfLibrary.AttachedBehaviors.UIElements
         /// <param name="sender">UIElement</param>
         /// <param name="info">設定値</param>
         [AttachedPropertyBrowsableForType(typeof(UIElement))]
-        public void SetInfo(DependencyObject sender, MessageBoxInfo info)
+        public static void SetInfo(DependencyObject sender, MessageBoxInfo info)
         {
             sender.SetValue(InfoProperty, info);
         }
