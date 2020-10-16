@@ -132,11 +132,14 @@ namespace MachineLearning.Forms.ViewModels
 
         /// <summary>メッセージボックスを表示</summary>
         /// <param name="info">メッセージボックス表示内容</param>
-        private void ShowMessageBox(MessageBoxInfo info)
+        /// <returns>メッセージボックス戻り値</returns>
+        private MessageBoxResult ShowMessageBox(MessageBoxInfo info)
         {
 
             MessageInfo = info;
             CallPropertyChanged(nameof(MessageInfo));
+
+            return info.Result;
 
         }
 

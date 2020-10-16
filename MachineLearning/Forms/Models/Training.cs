@@ -92,7 +92,7 @@ namespace MachineLearning.Forms.Models
 
         /// <summary>メッセージボックスを表示するデリゲート</summary>
         /// <param name="info">メッセージボックス表示内容</param>
-        public delegate void ShowMessageBoxDelegate(MessageBoxInfo info);
+        public delegate MessageBoxResult ShowMessageBoxDelegate(MessageBoxInfo info);
 
         /// <summary>メッセージボックスを表示するメソッド</summary>
         private readonly ShowMessageBoxDelegate _ShowMessageBoxMethod;
@@ -260,7 +260,12 @@ namespace MachineLearning.Forms.Models
                         DefaultResult = MessageBoxResult.Yes,
                     };
 
-                    _ShowMessageBoxMethod.Invoke(info);
+                    info.Result = _ShowMessageBoxMethod.Invoke(info);
+
+                    while (info.Result.Equals(MessageBoxResult.None))
+                    {
+                        Task.Delay(1);
+                    }
 
                     if (info.Result.Equals(MessageBoxResult.Yes))
                     {
