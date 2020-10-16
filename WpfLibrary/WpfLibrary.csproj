@@ -74,6 +74,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Windows\CheckClosable.cs" />
     <Compile Include="Windows\MessageBoxInfo.cs" />
     <Compile Include="Windows\ShowDialog.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
