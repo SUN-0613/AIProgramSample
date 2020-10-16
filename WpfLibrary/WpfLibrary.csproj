@@ -57,7 +57,7 @@
     <Compile Include="AttachedBehaviors\Canvases\CreateBmpFile.cs" />
     <Compile Include="AttachedBehaviors\Canvases\DrawGraph.cs" />
     <Compile Include="AttachedBehaviors\Canvases\PaintMode.cs" />
-    <Compile Include="AttachedBehaviors\Windows\ShowMessageBox.cs" />
+    <Compile Include="AttachedBehaviors\UIElements\ShowMessageBox.cs" />
     <Compile Include="MVVM\DelegateCommand.cs" />
     <Compile Include="MVVM\ViewModelBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

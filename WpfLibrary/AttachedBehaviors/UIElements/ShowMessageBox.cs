@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using WpfLibrary.Windows;
 
-namespace WpfLibrary.AttachedBehaviors.Windows
+namespace WpfLibrary.AttachedBehaviors.UIElements
 {
 
     /// <summary>メッセージボックスを表示する添付ビヘイビア</summary>
@@ -19,18 +19,18 @@ namespace WpfLibrary.AttachedBehaviors.Windows
                 new PropertyMetadata(null, OnInfoChanged));
 
         /// <summary>メッセージボックス表示内容を取得</summary>
-        /// <param name="sender">Window</param>
+        /// <param name="sender">UIElement</param>
         /// <returns>現在値</returns>
-        [AttachedPropertyBrowsableForType(typeof(Window))]
+        [AttachedPropertyBrowsableForType(typeof(UIElement))]
         public MessageBoxInfo GetInfo(DependencyObject sender)
         {
             return (MessageBoxInfo)sender.GetValue(InfoProperty);
         }
 
         /// <summary>メッセージボックス表示内容を設定</summary>
-        /// <param name="sender">Window</param>
+        /// <param name="sender">UIElement</param>
         /// <param name="info">設定値</param>
-        [AttachedPropertyBrowsableForType(typeof(Window))]
+        [AttachedPropertyBrowsableForType(typeof(UIElement))]
         public void SetInfo(DependencyObject sender, MessageBoxInfo info)
         {
             sender.SetValue(InfoProperty, info);
@@ -41,7 +41,7 @@ namespace WpfLibrary.AttachedBehaviors.Windows
         #region event
 
         /// <summary>メッセージボックス表示内容の変更イベント</summary>
-        /// <param name="sender">Window</param>
+        /// <param name="sender">UIElement</param>
         /// <param name="e">プロパティ変更イベントデータ</param>
         private static void OnInfoChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
