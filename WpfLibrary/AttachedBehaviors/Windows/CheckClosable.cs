@@ -11,13 +11,39 @@ namespace WpfLibrary.AttachedBehaviors.Windows
 
         #region dependency property
 
+        /// <summary>判定FLG</summary>
+        public static readonly DependencyProperty IsCheckProperty
+            = DependencyProperty.RegisterAttached(
+                "IsCheck",
+                typeof(bool),
+                typeof(CheckClosable),
+                new PropertyMetadata(false, OnIsCheckChanged));
+
+        /// <summary>判定FLGの値を取得</summary>
+        /// <param name="sender">Window</param>
+        /// <returns>現在値</returns>
+        [AttachedPropertyBrowsableForType(typeof(Window))]
+        public static bool GetIsCheck(DependencyObject sender)
+        {
+            return (bool)sender.GetValue(IsCheckProperty);
+        }
+
+        /// <summary>判定FLGの値を設定</summary>
+        /// <param name="sender">Window</param>
+        /// <param name="value">設定値</param>
+        [AttachedPropertyBrowsableForType(typeof(Window))]
+        public static void SetIsCheck(DependencyObject sender, bool value)
+        {
+            sender.SetValue(IsCheckProperty, value);
+        }
+
         /// <summary>Windowsを閉じて良いか管理するFLG</summary>
         public static readonly DependencyProperty IsClosableProperty
             = DependencyProperty.RegisterAttached(
                 "IsClosable",
                 typeof(bool),
                 typeof(CheckClosable),
-                new PropertyMetadata(false, OnIsClosableChanged));
+                new PropertyMetadata(true));
 
         /// <summary>Windowsを閉じて良いか管理するFLGの値を取得</summary>
         /// <param name="sender">Window</param>
@@ -41,13 +67,13 @@ namespace WpfLibrary.AttachedBehaviors.Windows
 
         #region event
 
-        /// <summary>管理FLGの値変更イベント</summary>
+        /// <summary>判定FLGの値変更イベント</summary>
         /// <param name="sender">Window</param>
         /// <param name="e">プロパティ変更イベントデータ</param>
-        private static void OnIsClosableChanged(object sender, DependencyPropertyChangedEventArgs e)
+        private static void OnIsCheckChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
 
-            if (e.NewValue is bool value && value)
+            if (e.NewValue is bool value)
             {
 
                 if (sender is Window window)
