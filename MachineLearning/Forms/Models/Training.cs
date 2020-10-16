@@ -292,12 +292,9 @@ namespace MachineLearning.Forms.Models
         private void LoadData()
         {
 
-            const string imageFilePath = @"..\..\..\MNIST\train-images-idx3-ubyte\train-images.idx3-ubyte";
-            const string labelFilePath = @"..\..\..\MNIST\train-labels-idx1-ubyte\train-labels.idx1-ubyte";
-
             InitializeList();
 
-            using (var stream = new FileStream(imageFilePath, FileMode.Open))
+            using (var stream = new FileStream(FilePaths.TrainImageFilePath, FileMode.Open))
             {
 
                 using (var reader = new BinaryReader(stream))
@@ -322,7 +319,7 @@ namespace MachineLearning.Forms.Models
 
             }
 
-            using (var stream = new FileStream(labelFilePath, FileMode.Open))
+            using (var stream = new FileStream(FilePaths.TrainLabelFilePath, FileMode.Open))
             {
 
                 using (var reader = new BinaryReader(stream))
@@ -390,9 +387,7 @@ namespace MachineLearning.Forms.Models
         private void SaveLabels(List<int> labels)
         {
 
-            const string labelFilePath = @".\Label.txt";
-
-            using (var writer = new StreamWriter(labelFilePath))
+            using (var writer = new StreamWriter(FilePaths.LabelTextFilePath))
             {
 
                 for (var iLoop = 0; iLoop < labels.Count; iLoop++)

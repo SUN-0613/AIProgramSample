@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Forms\Models\Detect.cs" />
+    <Compile Include="Forms\Models\FilePaths.cs" />
     <Compile Include="Forms\Models\Training.cs" />
     <Compile Include="Forms\ViewModels\Detect.cs" />
     <Compile Include="Forms\ViewModels\Training.cs" />
