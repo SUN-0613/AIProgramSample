@@ -149,12 +149,12 @@ namespace MachineLearning.Forms.Models
             Pixels.ForEach((pixels) => pixels.Clear());
             Pixels.Clear();
 
-            for (var iLoop = 0; iLoop < PixelLength; iLoop++)
+            for (var iLoop = 0; iLoop < TotalData; iLoop++)
             {
 
                 Pixels.Add(new List<double>());
 
-                for (var jLoop = 0; jLoop < PixelLength; jLoop++)
+                for (var jLoop = 0; jLoop < InputNodesLength; jLoop++)
                 {
                     Pixels[iLoop].Add(0d);
                 }
@@ -237,7 +237,7 @@ namespace MachineLearning.Forms.Models
                         _NeuralNetwork.CalcError(Labels[iLoop]);
                         _NeuralNetwork.UpdateWeight(Alpha);
 
-                        if (iLoop % 100 == 0)
+                        if (iLoop > 0 && iLoop % 100 == 0)
                         {
                             BeginTest(100, iLoop);
                             _UpdateMessageMethod.Invoke(iLoop.ToString());
@@ -287,8 +287,8 @@ namespace MachineLearning.Forms.Models
         private void LoadData()
         {
 
-            const string imageFilePath = @"..\..\..\..\MNIST\train-images-idx3-ubyte\train-images.idx3-ubyte";
-            const string labelFilePath = @"..\..\..\..\MNIST\train-labels-idx1-ubyte\train-labels.idx1-ubyte";
+            const string imageFilePath = @"..\..\..\MNIST\train-images-idx3-ubyte\train-images.idx3-ubyte";
+            const string labelFilePath = @"..\..\..\MNIST\train-labels-idx1-ubyte\train-labels.idx1-ubyte";
 
             InitializeList();
 
@@ -401,7 +401,7 @@ namespace MachineLearning.Forms.Models
                     writer.Write(labels[iLoop].ToString());
 
                 }
-                
+
             }
 
         }
