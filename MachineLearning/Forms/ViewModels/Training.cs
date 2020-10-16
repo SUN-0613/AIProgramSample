@@ -14,7 +14,7 @@ namespace MachineLearning.Forms.ViewModels
         #region property
 
         /// <summary>機械学習ボタン有効化</summary>
-        public bool IsButtonEnabled { get; private set; }
+        public bool IsButtonEnabled { get; private set; } = true;
 
         /// <summary>機械学習コマンド</summary>
         public DelegateCommand TrainCommand
@@ -39,10 +39,10 @@ namespace MachineLearning.Forms.ViewModels
         public bool IsGraphInitialize { get; set; } = false;
 
         /// <summary>折れ線グラフの最小座標</summary>
-        public Point MinPoint { get; set; } = new Point(0d, 0d);
+        public Point MinPoint { get; set; } = new Point(0d, 0.5);
 
         /// <summary>折れ線グラフの最大座標</summary>
-        public Point MaxPoint { get; set; } = new Point(100d, 100d);
+        public Point MaxPoint { get; set; } = new Point(1d, 1d);
 
         /// <summary>更新内容</summary>
         public string Message { get; set; }
