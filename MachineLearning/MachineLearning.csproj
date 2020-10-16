@@ -61,6 +61,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Models\DataLengths.cs" />
     <Compile Include="Forms\Models\Detect.cs" />
     <Compile Include="Forms\Models\FilePaths.cs" />
     <Compile Include="Forms\Models\Training.cs" />

@@ -35,27 +35,6 @@ namespace MachineLearning.Forms.Models
 
         #region global variable
 
-        /// <summary>使用する画像のピクセル数</summary>
-        public const int PixelLength = 28;
-
-        /// <summary>入力層のノード数</summary>
-        public const int InputNodesLength = PixelLength * PixelLength;
-
-        /// <summary>出力層のノード数</summary>
-        public const int OutputNodesLength = 10;
-
-        /// <summary>隠れ層のノード数</summary>
-        public const int HiddenNodesLength = OutputNodesLength * 10;
-
-        /// <summary>学習用文字画像データ</summary>
-        public const int TrainingData = 50000;
-
-        /// <summary>検証用文字画像データ</summary>
-        public const int TestData = 10000;
-
-        /// <summary>文字画像データ総数</summary>
-        public const int TotalData = TrainingData + TestData;
-
         /// <summary>ニューラルネットワーク</summary>
         private readonly Network _NeuralNetwork = new Network();
 
@@ -136,9 +115,9 @@ namespace MachineLearning.Forms.Models
             InitializeList();
 
             // 入力層、隠れ層、出力層の3つをニューラルネットワークに追加
-            _NeuralNetwork.AddLayer(InputNodesLength);
-            _NeuralNetwork.AddLayer(HiddenNodesLength);
-            _NeuralNetwork.AddLayer(OutputNodesLength);
+            _NeuralNetwork.AddLayer(DataLengths.InputNodesLength);
+            _NeuralNetwork.AddLayer(DataLengths.HiddenNodesLength);
+            _NeuralNetwork.AddLayer(DataLengths.OutputNodesLength);
 
         }
 
@@ -149,12 +128,12 @@ namespace MachineLearning.Forms.Models
             Pixels.ForEach((pixels) => pixels.Clear());
             Pixels.Clear();
 
-            for (var iLoop = 0; iLoop < TotalData; iLoop++)
+            for (var iLoop = 0; iLoop < DataLengths.TotalData; iLoop++)
             {
 
                 Pixels.Add(new List<double>());
 
-                for (var jLoop = 0; jLoop < InputNodesLength; jLoop++)
+                for (var jLoop = 0; jLoop < DataLengths.InputNodesLength; jLoop++)
                 {
                     Pixels[iLoop].Add(0d);
                 }
@@ -166,13 +145,13 @@ namespace MachineLearning.Forms.Models
             Labels.ForEach((labels) => labels.Clear());
             Labels.Clear();
 
-            for (var iLoop = 0; iLoop < TotalData; iLoop++)
+            for (var iLoop = 0; iLoop < DataLengths.TotalData; iLoop++)
             {
 
                 LabelIndexes.Add(0);
                 Labels.Add(new List<double>());
 
-                for (var jLoop = 0; jLoop < OutputNodesLength; jLoop++)
+                for (var jLoop = 0; jLoop < DataLengths.OutputNodesLength; jLoop++)
                 {
                     Labels[iLoop].Add(0);
                 }
@@ -230,7 +209,7 @@ namespace MachineLearning.Forms.Models
                     _NeuralNetwork.InitializeWeight();
 
                     // 機械学習開始
-                    for (var iLoop = 0; iLoop < TrainingData; iLoop++)
+                    for (var iLoop = 0; iLoop < DataLengths.TrainingData; iLoop++)
                     {
 
                         _NeuralNetwork.CalcOutputValue(Pixels[iLoop]);
@@ -247,7 +226,7 @@ namespace MachineLearning.Forms.Models
 
                     _UpdateMessageMethod.Invoke("Testing...");
 
-                    var score = BeginTest(TestData, TrainingData);
+                    var score = BeginTest(DataLengths.TestData, DataLengths.TrainingData);
                     _UpdateMessageMethod.Invoke((score * 100d).ToString("F2") + "%");
 
                     // メッセージボックスを表示
@@ -359,7 +338,7 @@ namespace MachineLearning.Forms.Models
         {
 
             var okCount = 0;
-            var offset = TrainingData;
+            var offset = DataLengths.TrainingData;
             var lastData = offset + length;
 
             for (var iLoop = 0; iLoop < length; iLoop++)
@@ -376,7 +355,7 @@ namespace MachineLearning.Forms.Models
 
             var score = (double)okCount / (double)length;
 
-            _UpdateGraphPointMethod.Invoke((double)pointX / (double)TrainingData, score);
+            _UpdateGraphPointMethod.Invoke((double)pointX / (double)DataLengths.TrainingData, score);
 
             return score;
 
