@@ -69,7 +69,7 @@ namespace NeuralNetwork.Elements
 
         /// <summary>全ノードにデータ入力</summary>
         /// <param name="inputs">入力値一覧</param>
-        public void SetInputData(List<double> inputs)
+        public void SetInputData(IReadOnlyList<double> inputs)
         {
 
             for (var iLoop = 0; iLoop < Nodes.Count; iLoop++)

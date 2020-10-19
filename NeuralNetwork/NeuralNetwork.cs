@@ -54,7 +54,7 @@ namespace NeuralNetwork
 
         /// <summary>入力層にデータを入力したあとに出力層に向けて計算を行う</summary>
         /// <param name="inputs">入力するデータ一覧</param>
-        public void CalcOutputValue(List<double> inputs)
+        public void CalcOutputValue(IReadOnlyList<double> inputs)
         {
 
             if (!Layers.Count.Equals(0))
@@ -111,7 +111,7 @@ namespace NeuralNetwork
 
         /// <summary>出力層から遡って誤差を計算</summary>
         /// <param name="trainData">教師データ</param>
-        public void CalcError(List<double> trainData)
+        public void CalcError(IReadOnlyList<double> trainData)
         {
 
             if (!Layers.Count.Equals(0))
