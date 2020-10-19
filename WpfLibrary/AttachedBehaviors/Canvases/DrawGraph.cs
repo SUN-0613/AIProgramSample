@@ -172,14 +172,14 @@ namespace WpfLibrary.AttachedBehaviors.Canvases
 
         #region global variable
 
-        /// <summary>線を描写するコントロール</summary>
-        private static Polyline _Line = null;
-
         /// <summary>Point初期化用値</summary>
-        private static Point _NaNPoint = new Point(double.NaN, double.NaN);
+        private static readonly Point _NaNPoint = new Point(double.NaN, double.NaN);
 
         /// <summary>現在のグラフ終端位置</summary>
         private static Point _LineEndPoint = _NaNPoint;
+
+        /// <summary>線を描写するコントロール</summary>
+        private static Polyline _Line = null;
 
         #endregion
 
@@ -247,10 +247,17 @@ namespace WpfLibrary.AttachedBehaviors.Canvases
         private static void OnIsInitializeChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
 
-            _Line?.Points.Clear();
-            _Line = null;
+            if (sender is Canvas canvas)
+            {
 
-            _LineEndPoint = _NaNPoint;
+                _Line?.Points.Clear();
+                _Line = null;
+
+                _LineEndPoint = _NaNPoint;
+
+                canvas.Children.Clear();
+
+            }
 
         }
 
