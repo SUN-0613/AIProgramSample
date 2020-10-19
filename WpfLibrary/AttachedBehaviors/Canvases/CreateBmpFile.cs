@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using WpfLibrary.Windows;
+using WpfLibrary.Windows.Abstracts;
 
 namespace WpfLibrary.AttachedBehaviors.Canvases
 {
@@ -12,29 +12,29 @@ namespace WpfLibrary.AttachedBehaviors.Canvases
         #region dependency property
 
         /// <summary>Bitmapファイル情報</summary>
-        public static readonly DependencyProperty BmpFileInfoProperty
+        public static readonly DependencyProperty FileInfoProperty
             = DependencyProperty.RegisterAttached(
-                "BmpFileInfo",
-                typeof(CreateBmpFileInfo),
+                "FileInfo",
+                typeof(ICreatePictureFile),
                 typeof(CreateBmpFile),
-                new PropertyMetadata(false, BmpFileInfoChanged));
+                new PropertyMetadata(null, BmpFileInfoChanged));
 
         /// <summary>Bitmapファイル情報の取得</summary>
         /// <param name="sender">Canvas</param>
         /// <returns>現在値</returns>
         [AttachedPropertyBrowsableForType(typeof(Canvas))]
-        public static CreateBmpFileInfo GetBmpFileInfo(DependencyObject sender)
+        public static ICreatePictureFile GetFileInfo(DependencyObject sender)
         {
-            return (CreateBmpFileInfo)sender.GetValue(BmpFileInfoProperty);
+            return (CreatePictureFileBase)sender.GetValue(FileInfoProperty);
         }
 
         /// <summary>Bitmapファイル情報を設定</summary>
         /// <param name="sender">Canvas</param>
         /// <param name="value">設定値</param>
         [AttachedPropertyBrowsableForType(typeof(Canvas))]
-        public static void SetBmpFileInfo(DependencyObject sender, CreateBmpFileInfo value)
+        public static void SetFileInfo(DependencyObject sender, ICreatePictureFile value)
         {
-            sender.SetValue(BmpFileInfoProperty, value);
+            sender.SetValue(FileInfoProperty, value);
         }
 
         #endregion
@@ -47,10 +47,10 @@ namespace WpfLibrary.AttachedBehaviors.Canvases
         private static void BmpFileInfoChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
 
-            if (e.NewValue is CreateBmpFileInfo info
+            if (e.NewValue is ICreatePictureFile info
                 && sender is Canvas canvas)
             {
-                info.CreateBitmapFile(canvas);
+                info.CreatePictureFile(canvas);
             }
 
         }

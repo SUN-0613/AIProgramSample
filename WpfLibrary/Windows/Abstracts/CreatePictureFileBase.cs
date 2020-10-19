@@ -8,7 +8,7 @@ namespace WpfLibrary.Windows.Abstracts
 {
 
     /// <summary>Canvasから画像ファイルを作成するためのデータ情報のベースクラス</summary>
-    public abstract class CreatePictureFileBase
+    public abstract class CreatePictureFileBase : ICreatePictureFile
     {
 
         #region const
@@ -69,9 +69,9 @@ namespace WpfLibrary.Windows.Abstracts
         /// <summary>出力する画像ファイルの形式に合わせたエンコーダを取得</summary>
         protected abstract BitmapEncoder GetEncorder();
 
-        /// <summary>指定するCanvasの内容でBitmapファイルを生成</summary>
+        /// <summary>指定するCanvasの内容で画像ファイルを生成</summary>
         /// <param name="canvas">Canvas</param>
-        public void CreateBitmapFile(Canvas canvas)
+        public void CreatePictureFile(Canvas canvas)
         {
 
             if (!canvas.IsLoaded)
@@ -97,20 +97,43 @@ namespace WpfLibrary.Windows.Abstracts
 
             // 一部を切り取るためにCanvasの位置を移動
             var isTranslate = false;
-            var transform = canvas.RenderTransform;
+            var renderTransform = canvas.RenderTransform;
+            var layoutTransform = canvas.LayoutTransform;
 
             try
             {
 
-                if (!Left.Equals(0) || !Top.Equals(0))
+                var left = Left - canvas.Margin.Left;
+                var top = Top - canvas.Margin.Top;
+
+                if (!left.Equals(0) || !top.Equals(0))
                 {
 
-                    canvas.RenderTransform = new TranslateTransform(Left, Top);
-                    canvas.UpdateLayout();
+                    canvas.RenderTransform = new TranslateTransform(left, top);
 
                     isTranslate = true;
 
                 }
+
+                if (!width.Equals(canvas.ActualWidth)
+                    || !height.Equals(canvas.ActualHeight))
+                {
+
+                    var scaleX = width / canvas.ActualWidth;
+                    var scaleY = height / canvas.ActualHeight;
+
+                    canvas.LayoutTransform = new ScaleTransform(scaleX, scaleY);
+
+                    isTranslate = true;
+
+                }
+
+                if (isTranslate)
+                {
+                    canvas.UpdateLayout();
+                }
+
+                target.Render(canvas);
 
                 // bitmapへ出力
                 using (var stream = new FileStream(FilePath, FileMode.OpenOrCreate))
@@ -129,7 +152,8 @@ namespace WpfLibrary.Windows.Abstracts
                 // Canvasの位置を元に戻す
                 if (isTranslate)
                 {
-                    canvas.RenderTransform = transform;
+                    canvas.RenderTransform = renderTransform;
+                    canvas.LayoutTransform = layoutTransform;
                     canvas.UpdateLayout();
                 }
 

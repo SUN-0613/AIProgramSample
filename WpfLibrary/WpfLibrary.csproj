@@ -77,6 +77,7 @@
     </Compile>
     <Compile Include="AttachedBehaviors\Windows\CheckClosable.cs" />
     <Compile Include="Windows\Abstracts\CreatePictureFileBase.cs" />
+    <Compile Include="Windows\Abstracts\ICreatePictureFile.cs" />
     <Compile Include="Windows\CreateBmpFileInfo.cs" />
     <Compile Include="Windows\MessageBoxInfo.cs" />
     <Compile Include="Windows\ShowDialog.cs" />
