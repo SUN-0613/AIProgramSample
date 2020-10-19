@@ -17,6 +17,9 @@
         /// <summary>ニューラルネットワークの構成と全体の重みを保存したファイル</summary>
         public const string ParameterFilePath = @".\Weight.dat";
 
+        /// <summary>フリーハンドで描画した画像ファイルパス</summary>
+        public const string FreeHandFilePath = @".\FreeHand.bmp";
+
     }
 
 }

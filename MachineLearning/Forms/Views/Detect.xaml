@@ -3,10 +3,49 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MachineLearning.Forms.Views"
+        xmlns:vm="clr-namespace:MachineLearning.Forms.ViewModels"
+        xmlns:bc="clr-namespace:WpfLibrary.AttachedBehaviors.Canvases;assembly=WpfLibrary"
+        xmlns:bw="clr-namespace:WpfLibrary.AttachedBehaviors.Windows;assembly=WpfLibrary"
         mc:Ignorable="d"
-        Title="Detect" Height="450" Width="800">
-    <Grid>
-        
+        bw:DisposeViewModel.IsDisposableViewModel="True"
+        Title="Detect" Height="350" Width="600">
+    <Window.DataContext>
+        <vm:Detect />
+    </Window.DataContext>
+    <Grid Margin="2" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Canvas Grid.Row="0" Grid.Column="0"
+                Background="White"
+                bc:PaintMode.IsEnabled="True"
+                bc:PaintMode.IsInitialize="{Binding IsInitializeCanvas}"
+                bc:PaintMode.Stroke="Black" bc:PaintMode.StrokeThickness="8"
+                bc:CreateBmpFile.FileInfo="{Binding FileInfo}"
+                bc:MouseUpToExecuteCommand.Command="{Binding ImageRecognitionCommand}" />
+
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Result}" FontSize="180" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="1" Content="Clear" >
+                <Button.InputBindings>
+                    <MouseBinding MouseAction="LeftClick" Command="{Binding InitializeCommand}" />
+                </Button.InputBindings>
+            </Button>
+            
+        </Grid>
     </Grid>
 </Window>
