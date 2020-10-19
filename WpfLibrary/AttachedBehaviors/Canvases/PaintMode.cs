@@ -92,9 +92,38 @@ namespace WpfLibrary.AttachedBehaviors.Canvases
             sender.SetValue(StrokeThicknessProperty, value);
         }
 
+        /// <summary>グラフ初期化実行FLG</summary>
+        public static readonly DependencyProperty IsInitializeProperty
+            = DependencyProperty.RegisterAttached(
+                "IsInitialize",
+                typeof(bool),
+                typeof(PaintMode),
+                new PropertyMetadata(false, OnIsInitializeChanged));
+
+        /// <summary>グラフ初期化実行FLGを取得</summary>
+        /// <param name="sender">Canvas</param>
+        /// <returns>現在値</returns>
+        [AttachedPropertyBrowsableForType(typeof(Canvas))]
+        public static bool GetIsInitialize(DependencyObject sender)
+        {
+            return (bool)sender.GetValue(IsInitializeProperty);
+        }
+
+        /// <summary>グラフ初期化実行FLGを設定</summary>
+        /// <param name="sender">Canvas</param>
+        /// <param name="value">設定値</param>
+        [AttachedPropertyBrowsableForType(typeof(Canvas))]
+        public static void SetIsInitialize(DependencyObject sender, bool value)
+        {
+            sender.SetValue(IsInitializeProperty, value);
+        }
+
         #endregion
 
         #region global variable
+
+        /// <summary>Point初期化用値</summary>
+        private static readonly Point _NaNPoint = new Point(double.NaN, double.NaN);
 
         /// <summary>マウスの現在位置</summary>
         private static Point _MouseCurrentPoint;
@@ -188,7 +217,8 @@ namespace WpfLibrary.AttachedBehaviors.Canvases
         {
 
             if (e.LeftButton.Equals(MouseButtonState.Pressed)
-                && sender is Canvas canvas)
+                && sender is Canvas canvas
+                && !_MouseCurrentPoint.Equals(_NaNPoint))
             {
 
                 // マウスの現在位置を取得
@@ -202,6 +232,26 @@ namespace WpfLibrary.AttachedBehaviors.Canvases
                     _MouseCurrentPoint = current;
 
                 }
+
+            }
+
+        }
+
+        /// <summary>グラフ初期化実行FLGの更新イベント</summary>
+        /// <param name="sender">Canvas</param>
+        /// <param name="e">プロパティ変更イベントデータ</param>
+        private static void OnIsInitializeChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
+            if (sender is Canvas canvas)
+            {
+
+                _Line?.Points.Clear();
+                _Line = null;
+
+                _MouseCurrentPoint = _NaNPoint;
+
+                canvas.Children.Clear();
 
             }
 
