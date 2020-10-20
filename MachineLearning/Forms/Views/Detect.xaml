@@ -6,6 +6,8 @@
         xmlns:vm="clr-namespace:MachineLearning.Forms.ViewModels"
         xmlns:bc="clr-namespace:WpfLibrary.AttachedBehaviors.Canvases;assembly=WpfLibrary"
         xmlns:bw="clr-namespace:WpfLibrary.AttachedBehaviors.Windows;assembly=WpfLibrary"
+        xmlns:bb="clr-namespace:WpfLibrary.AttachedBehaviors.Buttons;assembly=WpfLibrary"
+        xmlns:view="clr-namespace:MachineLearning.Forms.Views"
         mc:Ignorable="d"
         bw:DisposeViewModel.IsDisposableViewModel="True"
         Title="Detect" Height="350" Width="600">
@@ -38,6 +40,8 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="100" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <Button Grid.Column="1" Content="Clear" >
@@ -45,7 +49,9 @@
                     <MouseBinding MouseAction="LeftClick" Command="{Binding InitializeCommand}" />
                 </Button.InputBindings>
             </Button>
-            
+
+            <Button Grid.Column="3" Content="Traning" bb:ClickToShowWindow.WindowType="{x:Type view:Training}" bb:ClickToShowWindow.IsDialogFormat="True" />
+
         </Grid>
     </Grid>
 </Window>

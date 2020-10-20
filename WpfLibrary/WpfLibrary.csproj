@@ -54,6 +54,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttachedBehaviors\Buttons\ClickToShowWindow.cs" />
     <Compile Include="AttachedBehaviors\Canvases\CreateBmpFile.cs" />
     <Compile Include="AttachedBehaviors\Canvases\DrawGraph.cs" />
     <Compile Include="AttachedBehaviors\Canvases\MouseUpToExecuteCommand.cs" />
